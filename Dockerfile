@@ -27,9 +27,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 ENV CAFFE_ROOT=/opt/caffe
 WORKDIR $CAFFE_ROOT
 
-RUN git clone --depth 1 https://github.com/rysenko/deeplab.git .
-RUN pip install --upgrade pip
-RUN cd python && for req in $(cat requirements.txt) pydot; do pip install $req; done && cd .. && \
+RUN git clone --depth 1 https://github.com/rysenko/deeplab.git . && \
+    pip install --upgrade pip && \
+    cd python && for req in $(cat requirements.txt) pydot; do pip install $req; done && cd .. && \
+    git clone https://github.com/NVIDIA/nccl.git && cd nccl && make -j install && cd .. && rm -rf nccl && \
     mkdir build && cd build && \
     cmake -DCPU_ONLY=1 .. && \
     make -j"$(nproc)"
