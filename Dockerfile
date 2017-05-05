@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libopencv-dev \
         libprotobuf-dev \
         libsnappy-dev \
+        libmatio-dev \
         protobuf-compiler \
         python-dev \
         python-numpy \
