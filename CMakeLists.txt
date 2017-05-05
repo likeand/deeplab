@@ -138,6 +138,10 @@ include_directories(${LMDB_INCLUDE_DIR})
 find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
+#    Matio
+find_package(MATIO REQUIRED)
+include_directories(${MATIO_INCLUDE_DIR})
+
 ###    Subdirectories    ##########################################################################
 
 add_subdirectory(src/gtest)
